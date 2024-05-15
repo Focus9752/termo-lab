@@ -1,10 +1,13 @@
 from machine import Pin, Timer, ADC, I2C
 import math
+import os
 import time
 import onewire, ds18x20
 import bme280
 
-
+def blinc_led(timer):
+    led.toggle()
+    return
 
 def init_probe_ds1820():
     #init the sensor,
