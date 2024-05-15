@@ -9,12 +9,11 @@ import onewire, ds18x20
 import bme280
 
 
+led = Pin(25, Pin.OUT)
 
 def blinc_led(timer):
     led.toggle()
     return
 
-
-led = Pin(25, Pin.OUT)
 timer = Timer(freq=0.5, callback = blinc_led)
 print(timer)
