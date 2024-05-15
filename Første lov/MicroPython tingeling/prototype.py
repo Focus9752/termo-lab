@@ -102,7 +102,7 @@ while True:
     
     
     
-    print(pressure_lpass, pressure)
+    print(pressure_lpass, pressure, temp_bme, temperature)
     #######
     
     

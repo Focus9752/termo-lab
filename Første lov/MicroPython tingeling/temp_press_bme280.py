@@ -59,7 +59,7 @@ while True:
         break
     
 with open(filename, "w") as f:
-    f.write("Time\ttemp_C\tpressure\n")
+    f.write("Time\ttemp_C\tpressure\ttemp_bme_C\n")
 
 # Get the current time
 # (time after initializing pico? idk)
@@ -72,12 +72,12 @@ bme = init_bme280()
 
 while True:
     temperature = read_temp_probe_ds1820(sensor, roms)
-    pressure = read_temp_press_bme(bme)
+    temp_bme, pressure = read_temp_press_bme(bme)
     # Get time of measurement
     time_i = time.ticks_ms()/1000 - start_time
     # Save ALL of that good good data
-    data_string_out = "%0.1f\t%0.2f\n%0.2f\n" %(time_i, temperature, pressure)
-    print(time_i, temperature, pressure)
+    data_string_out = "%0.1f\t%0.2f\n%0.2f\%0.2f\n" %(time_i, temperature, pressure, temp_bme)
+    print(time_i, temperature, pressure, temp_bme)
     
     with open(filename, "a") as f:
         f.write(data_string_out)
